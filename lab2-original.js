@@ -49,32 +49,14 @@ function assert(expression, failureMessage) {
 */
 
 // TODO: Katie's Code for First Part
-function Blob () {
-  this.lifespan = 0;
-  this.rate = 0;
-  this.eatPeople = function() {
-    this.rate =+ 1;
-    return this.rate;
-  };
+function Blob (make blobs) {
+  this.blob = blob;
+
 }
 
-Blob.prototype.consumption = function() { // same as line 55
 
-};
 
-// console.log('***', Blob.prototype);
-var katie = new Blob();
-
-var peopleEaten = 0;
-while (peopleEaten <= 1000) {
-  peopleEatenThisHour = katie.eatPeople();
-  peopleEaten += peopleEatenThisHour;
-  katie.lifespan++;
-  console.log("Hour " + katie.lifespan + ".");
-  console.log("Ate " + peopleEatenThisHour + " this hour, " + peopleEaten + " in total.");
-}
-
-var hoursSpentInDowington = katie.lifespan;  // TODO: assign me the value of the
+var hoursSpentInDowington; // TODO: assign me the value of the
                            // above calculation
 
 // Now, write a method that takes a population for an arbitrary
@@ -83,17 +65,6 @@ var hoursSpentInDowington = katie.lifespan;  // TODO: assign me the value of the
 
 function hoursToOoze(population, peoplePerHour) {
   // TODO: implement me based on the instructions above. Be sure to then assign me to the Blob's prototype.
-  var katie = new Blob();
-
-  var peopleEaten = 0;
-  katie.rate = peoplePerHour;
-  while (peopleEaten <= population) {
-    peopleEatenThisHour = katie.eatPeople();
-    peopleEaten += peopleEatenThisHour;
-    katie.lifespan++;
-    console.log("Hour " + katie.lifespan + ".");
-    console.log("Ate " + peopleEatenThisHour + " this hour, " + peopleEaten + " in total.");
-  }
 }
 
 assert(blob.hoursToOoze(0, 1) === 0, "no people means no time needed.");
@@ -116,17 +87,13 @@ var hello = {
 // sentient beings. They have a home planet, a language that they
 // speak, and method called sayHello.
 
-function SentientBeing (language, planet) {
-  this.language = language;
-  this.planet = planet;
+function SentientBeing () {
   // TODO: specify a home planet and a language
   // you'll need to add parameters to this constructor
 }
 
 // sb is a SentientBeing object
 function sayHello (sb) {
-  console.log(hello[this.language]);
-  return (hello[sb.language]);
     // TODO: say hello prints out (console.log's) hello in the
     // language of the speaker, but returns it in the language
     // of the listener (the sb parameter above).
@@ -136,71 +103,13 @@ function sayHello (sb) {
     //TODO: put this on the SentientBeing prototype
   }
 
-SentientBeing.prototype.sayHello = sayHello;
-
 // TODO: create three subclasses of SentientBeing, one for each
 // species above (Klingon, Human, Romulan).
 
-function Klingon() {
-  // TODO
-  this.language = "klingon";
-  this.planet = "Qo\"noS";
-}
-
-Klingon.prototype = new SentientBeing();
-
-
-
-function Human() {
-  this.language = "federation standard";
-  this.planet = "Earth";
-}
-
-Human.prototype = new SentientBeing();
-
-
-function Romulan() {
-  this.language = "romulan";
-  this.planet = "Romulus";
-}
-
-Romulan.prototype = new SentientBeing();
-
-
-
-//var theHuman = new Human();
-//var theKlingon = new Klingon();
-//assert(theHuman.sayHello(theKlingon) === "nuqneH",
-
-// var test = ((new Human()).sayHello(new Klingon()) === "nuqneH");
-// if (!test) {
-//  console.log("the klingon should hear nuqneH")
-// }
-
 assert((new Human()).sayHello(new Klingon()) === "nuqneH",
   "the klingon should hear nuqneH");
-
-
 // TODO: write five more assertions, to complete all the possible
 // greetings between the three types of sentient beings you created above.
-
-assert((new Human()).sayHello(new Romulan()) === "Jolan\"tru",
-  "the romulan should hear Jolan\"tru");
-
-
-assert((new Romulan()).sayHello(new Human()) === "hello",
-  "the human should hear hello");
-
-assert((new Romulan()).sayHello(new Klingon()) === "nuqneH",
-  "the klingon should hear nuqneH");
-
-assert((new Klingon()).sayHello(new Human()) === "hello",
-  "the human should hear hello");
-
-assert((new Klingon()).sayHello(new Romulan()) === "Jolan\"tru",
-  "the romulan should hear Jolan\"tru");
-
-
 
 //*********************************************************
 // PROBLEM 3: Sorting. 20 points.
@@ -209,32 +118,13 @@ assert((new Klingon()).sayHello(new Romulan()) === "Jolan\"tru",
 // assertions for each one
 //*********************************************************
 function lastLetterSort(stringArray) {
-  function byLastLetter(a, b) {
+  function byLastLetter(array) {
     //TODO: implement me. sort the strings in alphabetical
     // order using their last letter
     // read this: http://www.w3schools.com/jsref/jsref_sort.asp
-
-    var aLastLetter = a.slice(-1);
-    var bLastLetter = b.slice(-1);
-
-
-   if(aLastLetter == bLastLetter) {
-   return 0;
-    }
-
-  if(aLastLetter > bLastLetter) {
-   return 1;
-    }
-
-  if(aLastLetter < bLastLetter) {
-   return -1;
-    }
   }
-
   stringArray.sort(byLastLetter);
 }
-
-
 
 function sumArray(numberArray) {
   var sum = 0;
@@ -243,7 +133,7 @@ function sumArray(numberArray) {
 }
 
 function sumSort(arrayOfArrays) {
-  arrayOfArrays.sort(function(a, b) {
+  arrayOfArrays.sort(function(item) {
     // TODO: implement me using sumArray
     //  order the arrays based on the sum of the numbers
     //  inside each array
